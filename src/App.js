@@ -5,7 +5,6 @@ import ToDo from './components/ToDo.js';
 class App extends Component {
   constructor (props){
     super(props);
-  }
   this.state = {
     todo : [
          { description: 'Walk the cat', isCompleted: true },
@@ -22,7 +21,7 @@ class App extends Component {
   handleSubmit(e) {
     e.preventDefault();
     if (!this.state.newTodoDescription) { return }
-  const newToDo = { description: this.state.newTodoDescription, is.isCompleted: false };
+  const newToDo = { description: this.state.newTodoDescription, isCompleted: false };
   this.setState({ todos: [...this.state.todos, newToDo], newTodoDescription: '' });
   }
   toggleComplete(index) {
@@ -38,13 +37,13 @@ class App extends Component {
       <div className="App">
        <ul>
        { this.state.todos.map( (todo, index) =>
-             <ToDo key={ index } description={ todo.description } isCompleted={ todo.isCompleted } />
              <ToDo key={ index } description={ todo.description } isCompleted={ todo.isCompleted} toggleComplete={ () => this.toggleComplete (index) } />
            )}
        </ul>
        <form onSubmit={ (e) => this.handleSubmit(e) }>
        <input type="text" value={ this.state.newTodoDescription } onChange={ (e) => this.handleChange(e) } />
        <input type="submit" />
+       </form>
       </div>
     );
   }
